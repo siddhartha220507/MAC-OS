@@ -1,0 +1,16 @@
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  .desktop-content {
+    flex: 1;
+  }
+}
