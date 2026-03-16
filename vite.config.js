@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   // base public path when served from a sub‑directory (e.g. GitHub Pages)
   // replace "new-mac-os" with your repository name if different
-  base: '/MAC-OS/',
+  base: '/mac-os/',
   plugins: [react()],
 })
