@@ -1,26 +1,27 @@
 .navbar {
   height: 28px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--os-glass-bg, rgba(0, 0, 0, 0.2));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
-  color: white;
+  color: var(--os-text-color, white);
   font-size: 13px;
   font-weight: 500;
   z-index: 1000;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 0 var(--os-glass-border, rgba(255, 255, 255, 0.1));
+  transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 
-  .navbar-left, .navbar-right {
+  .navbarleft, .navbarright {
     display: flex;
     align-items: center;
     height: 100%;
   }
 
-  .menu-item {
+  .menuitem {
     padding: 0 10px;
     height: 100%;
     display: flex;
@@ -38,12 +39,12 @@
     font-weight: 700;
   }
 
-  .apple-icon {
+  .appleicon {
     padding: 0 12px 0 4px;
     margin: 0;
   }
   
-  .icon-item {
+  .iconitem {
     padding: 0 8px;
   }
 }

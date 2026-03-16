@@ -1,0 +1,33 @@
+.terminalapp {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.95);
+  color: #33ff00;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  padding: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  .terminaloutput {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .terminalline {
+    display: flex;
+    min-height: 20px;
+    word-break: break-all;
+    
+    input {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      flex: 1;
+      margin-left: 5px;
+    }
+  }
+}

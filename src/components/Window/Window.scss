@@ -1,0 +1,201 @@
+.macwindow {
+  position: absolute;
+  background: var(--os-glass-bg, rgba(30, 30, 30, 0.6));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid var(--os-glass-border, rgba(255, 255, 255, 0.1));
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--os-glass-border, rgba(255, 255, 255, 0.05));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: clip-path 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+  transform-origin: center center;
+  
+  &.opening {
+    animation: windowOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+  &.closing {
+    animation: windowClose 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  }
+
+  &.active {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+@keyframes windowClose {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    clip-path: circle(150% at 50% 50%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+
+.windowheader {
+  height: 38px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: grab;
+  position: relative;
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.trafficlights {
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+  
+  .trafficlight {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+  
+  &:hover {
+    .close::after {
+      content: '×';
+      color: rgba(0,0,0,0.6);
+      font-size: 14px;
+      line-height: 12px;
+      font-weight: bold;
+      opacity: 1;
+    }
+    .minimize::after {
+      content: '−';
+      color: rgba(0,0,0,0.6);
+      font-size: 14px;
+      line-height: 12px;
+      font-weight: bold;
+      opacity: 1;
+    }
+    .maximize::after {
+      content: '+';
+      color: rgba(0,0,0,0.6);
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: bold;
+      opacity: 1;
+    }
+  }
+  
+  .close { background-color: #ff5f56; }
+  .minimize { background-color: #ffbd2e; }
+  .maximize { background-color: #27c93f; }
+}
+
+.windowtitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--os-text-color, rgba(255, 255, 255, 0.8));
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+  transition: color 0.5s ease;
+}
+
+.windowcontent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  
+  .appcontentwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
+    h2 {
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    p {
+      color: rgba(255,255,255,0.7);
+    }
+  }
+}
+
+.resizehandle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+  z-index: 10;
+}
+
+.apploadercontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.apploader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fadein {
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

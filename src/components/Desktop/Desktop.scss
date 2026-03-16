@@ -9,8 +9,36 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: background-image 0.5s ease-in-out, background-color 0.5s ease;
 
-  .desktop-content {
+  .desktopcontent {
     flex: 1;
+  }
+
+  .magictext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 56px;
+    font-weight: 200;
+    font-family: "Georgia", "Times New Roman", serif;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.4),
+      0 4px 15px rgba(0, 0, 0, 0.6);
+    letter-spacing: 6px;
+    text-transform: lowercase;
+    font-style: italic;
+    z-index: 50;
+    pointer-events: none;
+    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 1;
+    
+    &.hidden {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+      transition-duration: 0.8s;
+    }
   }
 }

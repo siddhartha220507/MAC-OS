@@ -23,24 +23,24 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="navbar-left">
-        <div className="menu-item apple-icon">
+      <div className="navbarleft">
+        <div className="menuitem appleicon">
           <Apple size={16} fill="white" />
         </div>
-        <div className="menu-item active">Finder</div>
-        <div className="menu-item">File</div>
-        <div className="menu-item">Edit</div>
-        <div className="menu-item">View</div>
-        <div className="menu-item">Go</div>
-        <div className="menu-item">Window</div>
-        <div className="menu-item">Help</div>
+        <div className="menuitem active">Siddhartha's</div>
+        <div className="menuitem">File</div>
+        <div className="menuitem">Edit</div>
+        <div className="menuitem">View</div>
+        <div className="menuitem">Go</div>
+        <div className="menuitem">Window</div>
+        <div className="menuitem">Help</div>
       </div>
       
-      <div className="navbar-right">
-        <div className="menu-item icon-item"><Wifi size={14} /></div>
-        <div className="menu-item icon-item"><BatteryFull size={16} /></div>
-        <div className="menu-item icon-item"><Search size={14} /></div>
-        <div className="menu-item date-time">{formatTime(time)}</div>
+      <div className="navbarright">
+        <div className="menuitem iconitem"><Wifi size={14} /></div>
+        <div className="menuitem iconitem"><BatteryFull size={16} /></div>
+        <div className="menuitem iconitem"><Search size={14} /></div>
+        <div className="menuitem datetime">{formatTime(time)}</div>
       </div>
     </div>
   );
